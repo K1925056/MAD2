@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { View,Text,Image } from 'react-native'
-import { Button  } from '@rneui/base';
+import { View,Image } from 'react-native'
+import { Button ,Text } from '@rneui/base';
 import axios from 'axios'; 
-const ExcerciseCard = ({exercise,saved,handleDelete}) => {
+const ExcerciseCard = ({exercise,saved,handleDelete, handleEdit }) => {
     const [success, setIsSuccess] = useState(null);
     const [visible, setIsVisible] = useState(null);
     console.log(exercise)
@@ -25,11 +25,11 @@ const ExcerciseCard = ({exercise,saved,handleDelete}) => {
     setTimeout(()=>{setIsVisible(false)},2000)
   return (
     <View style={{margin:10,justifyContent:"center",width:"100%", alignItems:'center'}}>
-        <Text style={visible? {display:'flex'}:{display:'none'}}>{success===true?<Text style={{backgroundColor:'green'}}>Sussesfully added to favourite</Text>:<Text style={{backgroundColor:'red'}} >Could not add</Text>}</Text>
-        <Text>Exercise Name: {exercise.name} </Text>
-        <Text>Body Part:{exercise.bodyPart} </Text>
-        <Text>Equipment: {exercise.equipment}</Text>  
-        <Text>Target: {exercise.target}</Text>
+        <Text h1 style={visible? {display:'flex'}:{display:'none'}}>{success===true?<Text style={{backgroundColor:'green'}}>Sussesfully added to favourite</Text>:<Text style={{backgroundColor:'red'}} >Could not add</Text>}</Text>
+        <Text h4 style={{color:'white'}}>Exercise Name: {exercise.name} </Text>
+        <Text h4 style={{color:'white'}}>Body Part:{exercise.bodyPart} </Text>
+        <Text h4 style={{color:'white'}}>Equipment: {exercise.equipment}</Text>  
+        <Text h4 style={{color:'white'}}>Target: {exercise.target}</Text>
         <Image 
         source={{uri: exercise.gifUrl}}  
         style={{width: 200, height:150 }} 
@@ -49,7 +49,8 @@ const ExcerciseCard = ({exercise,saved,handleDelete}) => {
           marginHorizontal: 20,
         }}
       />  }
-        {saved &&    <Button
+        {saved && 
+            <Button
         title="Remove"
         buttonStyle={{ backgroundColor: 'rgba(127, 220, 103, 1)' }}
         onPress={()=>handleDelete(exercise)}
@@ -64,8 +65,26 @@ const ExcerciseCard = ({exercise,saved,handleDelete}) => {
           color: 'white',
           marginHorizontal: 20,
         }}
-      />  }
-      
+      /> 
+     }
+      {saved && 
+          <Button
+          title="Edit"
+          buttonStyle={{ backgroundColor: 'rgba(127, 220, 103, 1)' }}
+          onPress={()=>handleEdit(exercise)}
+          containerStyle={{
+            height: 40,
+            backgroundColor:'#ff0000',
+            width: 200,
+            marginHorizontal: 50,
+            marginVertical: 10,
+          }}
+          titleStyle={{
+            color: 'white',
+            marginHorizontal: 20,
+          }}
+        />
+      }
      
 
     

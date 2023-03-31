@@ -3,7 +3,7 @@ import { View , Text} from 'react-native'
 import axios from 'axios';
 import ExcerciseCard from '../components/ExcerciseCard';
 import { FlatList } from 'react-native';
-const Favourite = () => {
+const Favourite = ({navigation}) => {
     const [data,setData] = useState([]);
     const [success, setIsSuccess] = useState(false);
     const handleDelete = (exercise) =>{
@@ -22,6 +22,9 @@ const Favourite = () => {
             setIsVisible(true) 
             setIsSuccess(false) 
           });
+    }
+    const handleEdit=(exercise)=>{
+        navigation.navigate('EditScreen',{exerciseData: exercise});
     }
     const load = () =>{
 
@@ -45,7 +48,7 @@ const Favourite = () => {
         {data.length>0 ?
     <FlatList
       data={data}
-      renderItem={({item})=> <ExcerciseCard exercise={item} saved={true} handleDelete={handleDelete}/>}
+      renderItem={({item})=> <ExcerciseCard exercise={item} saved={true} handleDelete={handleDelete} handleEdit={handleEdit}/>}
     />: <Text>Loading....</Text>}
     </View>
   )

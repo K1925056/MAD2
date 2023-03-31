@@ -9,8 +9,14 @@ import RestScreen from "./screens/RestScreen";
 import Loginn from "./screens/Loginn";
 import ExercisesScreen from "./screens/ExercisesScreen";
 import BodyPartCard from "./components/BodyPartCard";
-import BodyPartPage from "./screens/BodyPartPage";
+
 import Favourite from "./screens/Favourite";
+import EditExercise from "./screens/EditExercise";
+import Success from "./screens/Success";
+import CameraScreen from "./screens/CameraScreen";
+import MyImages from "./screens/Progress";
+import BodyPartPage from "./screens/BodyPartPage";
+import Progress from "./screens/Progress";
 
 const StackNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -24,8 +30,12 @@ const StackNavigator = () => {
         <Stack.Screen name="Workout" component={WorkoutScreen} options={{headerShown:false}}/>
         <Stack.Screen name="Fit" component={FitScreen} options={{headerShown:false}}/>
         <Stack.Screen name="Rest" component={RestScreen} options={{headerShown:false}}/>
-        <Stack.Screen name="BodyPart" component={BodyPartPage} />
+        <Stack.Screen name="EditScreen" component={EditExercise} />
         <Stack.Screen name="Favourite" component={Favourite} />
+        <Stack.Screen name="Success" component={Success}/>
+        <Stack.Screen name="Camera" component={CameraScreen} />
+        <Stack.Screen name="MyImages" component={Progress} />
+        <Stack.Screen name="BodyPart" component={BodyPartPage}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

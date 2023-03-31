@@ -31,6 +31,8 @@ const Loginn = ({navigation}) => {
       <Button buttonStyle={{margin:10}}  title="Home" onPress={(bodyPart)=>navigation.navigate('Home',{bodyPart:bodyPart})}/>
       <Button  buttonStyle={{margin:10}} title="Extra" onPress={()=>navigation.navigate('ExercisesScreen')}/>
       <Button   buttonStyle={{margin:10}} title="Favourite" onPress={()=>navigation.navigate('Favourite')}/>
+      <Button   buttonStyle={{margin:10}} title="Camera" onPress={()=>navigation.navigate('Camera')}/>
+      <Button   buttonStyle={{margin:10}} title="Progress" onPress={()=>navigation.navigate('MyImages')}/>
       </View>
   
       <Text style={{fontSize:24,fontWeight:'bold',color:"white", margin:5}}>Exarsices Library by body part</Text>

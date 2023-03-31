@@ -19,7 +19,7 @@ const Success = ({navigation}) => {
                 color: 'white',
                 marginHorizontal: 20,
               }}
-              onPress={()=>navigation.navigate('Home')}
+              onPress={()=>navigation.navigate('Loginn')}
             />
     </View>
   )
