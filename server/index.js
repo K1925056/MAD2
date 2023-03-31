@@ -56,15 +56,34 @@ const deleteFavouriteExercisesController = async (req,res) =>{
       } catch (error) {
         console.error(error);
         res.status(400).json({message:'Erorr',error});
-      } finally {
-       
-      }
-}
+      } }
 
+      const updateFavExercise = async (req, res) => {
+        const {_id, bodyPart,equipment, gifUrl, name, target} = req.query.initial;
+        console.log(bodyPart)
+      
+        try {
+          const client = await connectToDatabase();
+          const db = client.db('sport_db');
+          const collection = db.collection('FavExercise');
+          const newValues = { $set: {bodyPart,equipment, gifUrl, name, target}};
+          const requestdata = await collection.updateOne(
+            { _id:new ObjectId(_id) },
+            newValues
+          );
+          console.log(requestdata);
+          client.close();
+          res.status(200).json({ message: '1 document updated' });
+        } catch (error) {
+          console.error(error);
+          res.status(400).json({ message: 'Error', error });
+        }
+      };
+
+app.put('/api/favExercices',(req,res)=>{updateFavExercise(req,res)})
 app.get('/api/favExercices',(req,res)=>{getFafouriteExercisesController(req,res)})
 app.delete('/api/favExercices',(req,res)=>{deleteFavouriteExercisesController(req,res)})
 app.get('/api/postExercices',(req,res)=>{postExercisesController(req,res)})
 app.get('/',(req,res)=>res.json({message: "Root route for FITAPP"}))
+
 app.listen(PORT, console.log("Server started on port", PORT))
-
-
